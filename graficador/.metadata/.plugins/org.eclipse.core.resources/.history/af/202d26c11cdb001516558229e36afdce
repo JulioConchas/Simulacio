@@ -1,0 +1,12 @@
+import org.jfree.chart.*;
+import org.jfree.data.category.*;
+import org.jfree.chart.plot.*;
+
+public class Graficas {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

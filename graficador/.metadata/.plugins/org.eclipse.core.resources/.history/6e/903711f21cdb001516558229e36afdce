@@ -1,0 +1,15 @@
+import org.jfree.chart.*;
+import org.jfree.data.category.*;
+import org.jfree.chart.plot.*;
+
+public class Graficas {
+	public Graficas(){
+		DefaultCategoryDataset data = new DefaultCategoryDataset();
+		final String VIDEO1 = "tutorial_java";
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

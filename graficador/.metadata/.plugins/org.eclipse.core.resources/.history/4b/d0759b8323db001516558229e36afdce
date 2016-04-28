@@ -1,0 +1,40 @@
+import org.jfree.chart.*;
+import org.jfree.data.category.*;
+import org.jfree.chart.plot.*;
+import javax.swing.*;
+
+public class Graficas {
+	public Graficas(){
+//		DefaultCategoryDataset data = new DefaultCategoryDataset();
+//				
+//		data.addValue(1052, "PIB", "Años");
+//		data.addValue(1170, "PIB", "Años");
+//		data.addValue(1186,"PIB", "Años");
+//		data.addValue(1261, "PIB", "Años");
+//		data.addValue(1295, "PIB", "Años");
+//		data.addValue(1295,"PIB", "Años");
+//		data.addValue(1295, "PIB", "Años");
+		DefaultCategoryDataset line_chart_dataset = new DefaultCategoryDataset();
+        line_chart_dataset.addValue(80, "visitas", "Julio");
+        line_chart_dataset.addValue(300, "visitas", "Agosto");
+        line_chart_dataset.addValue(600, "visitas", "Septiembre");
+        line_chart_dataset.addValue(1200, "visitas", "Octubre");
+        line_chart_dataset.addValue(2400, "visitas", "Noviembre"); 
+		
+		//JFreeChart grafica = ChartFactory.createBarChart3D("PIB mexico", "Dias", "billones USD", data, PlotOrientation.VERTICAL, true, true,false);
+		JFreeChart grafica = ChartFactory.createLineChart("PIB mexico","Dias","billones USD",line_chart_dataset,PlotOrientation.VERTICAL,true,true,false);
+		
+		ChartPanel container = new ChartPanel(grafica);
+		JFrame ventana = new JFrame("Graficas en java");
+		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ventana.add(container);
+		ventana.setSize(600,400);
+		ventana.setVisible(true);
+		ventana.setLocationRelativeTo(null);
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Graficas();
+	}
+
+}

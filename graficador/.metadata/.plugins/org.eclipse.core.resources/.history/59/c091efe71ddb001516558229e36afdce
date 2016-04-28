@@ -1,0 +1,30 @@
+import org.jfree.chart.*;
+import org.jfree.data.category.*;
+import org.jfree.chart.plot.*;
+import javax.swing.*;
+
+public class Graficas {
+	public Graficas(){
+		DefaultCategoryDataset data = new DefaultCategoryDataset();
+		final String VIDEO1 = "tutorial_java";
+		final String VIDEO2 = "tutorial_css";
+		
+		data.addValue(100, VIDEO1, "Lunes");
+		data.addValue(50, VIDEO2, "Lunes");
+		
+		JFreeChart grafica = ChartFactory.createBarChart3D("VIDEOS", "Dias", "Reproducciones", data, PlotOrientation.VERTICAL, true, true,false);
+		
+		ChartPanel container = new ChartPanel(grafica);
+		JFrame ventana = new JFrame("Graficas en java");
+		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		ventana.add(container);
+		ventana.setSize(300,200;
+		ventana.setVisible(true);
+		ventana.setLocationRelativeTo(null);
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
