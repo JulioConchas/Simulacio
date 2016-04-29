@@ -35,8 +35,14 @@ int main(){
 				cin.get();
 			break;
 		/*	case 2:
+				system("clear");
+				cout << " **** Simpson ****\n";
+				//agregar simpson.cpp
 			break;
 			case 3:
+				system("clear");
+				cout <<" **** Secane ****\n";
+				//agregar secante.cpp
 			break;
 			case 4:
 			break;
