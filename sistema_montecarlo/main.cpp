@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include "nR.h"
 
 using namespace std;
  
@@ -20,8 +22,19 @@ int main(){
 		switch(option){
 		
 			case 1:
+				system("clear");
+				cout << " **** Newton Raphson **** \n";
+				nR n;
+				float r;
+				try{
+					r = n.raiz(1,1e-6,100);
+					cout <<"raiz ="<< r <<" function ="<<n.f(r)<<endl;
+				}catch(string* s){
+					cout <<"Error:"<<* s;
+				}
+				cin.get();
 			break;
-			case 2:
+		/*	case 2:
 			break;
 			case 3:
 			break;
@@ -32,7 +45,7 @@ int main(){
 			case 6:
 			break;
 			case 7:
-			break;
+			break;	*/
 		}
 
 return 0;
