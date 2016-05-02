@@ -154,9 +154,79 @@ int main(){
 				}
 			break;
 			}
-	/*		case 5:
+			case 5:{
+				system("clear");
+				cout<< " **** Muller **** \n";
+
+				int i,MAXIT;
+				double x0,x1,x2,x3,A,B,C,D,E,H0,H1;
+				double Fx0,Fx1,Fx2,Fx3,F10,F21,F210;
+				double A0,A1,A2,D0,D1;
+				double EA,EA1;
+
+				cout <<"\n\t\t METODO DE MULLER";
+				cout <<"\n\n FUNCION f(x) = x5 + x2 - 1";
+	
+				cout <<"\n\n Ingrese el valor para x0 = ";
+				cin >> x0;
+				cout <<"\n\n Ingrese el valor para x1 ";
+				cin >>x1;
+				cout <<"\n\n Ingrese el valor para x2 ";
+				cin >>x2;
+				cout <<"\n\n Ingrese numero de iteraciones ";
+				cin >> MAXIT;
+
+				i = 1;
+				while(i <= MAXIT){
+					Fx0 = pow(x0,5) + pow(x0,2) - 1;
+					Fx1 = pow(x1,5) + pow(x1,2) - 1;
+					Fx2 = pow(x2,5) + pow(x2,2) - 1;
+
+					F10 = (Fx1 - Fx0) / (x1 - x0);
+					F21 = (Fx2 - Fx1) / (x2 - x1);
+					F210 = (F21 - F10) / (x2 - x0);
+
+					H0 = x1 - x0;
+					H1 = x2 - x1;
+
+					
+					D0 = (Fx1 - Fx0) / H0;
+					D1 = (Fx2 - Fx1) / H1;
+					
+					A = (D1 - D0) / (H1 + H0);	
+					B = (A * H1) + D1;
+					C = Fx2;
+
+					if(B > C){
+						x3 = (2 * A0) / D1;
+					}
+					else{
+						x3 = (2 * A0) / D2;
+					}
+					Fx3 = pow(x3,3) + pow(x3,2) - 5 * x3 + 20;
+
+					D = abs(x3 - x0);
+					E = abs(Fx3);
+
+					if((D < EA1) || (E < EA1)){
+						cout << "\n\n calor de x: "<<x3<<endl<<endl;
+						cout << "\n\n El numero de iteracion encontrado: "<<i<<endl;
+						break;						
+					}
+					x0 = x1;
+					x1 = x2;
+					x2 = x3;
+
+					i++;
+
+				
+				}
+				cout << "El sistema no converge "<<MAXIT<<" Iteraciones.\n";
+				cout << "El ultimo valor encontrado para x: "<<x3<<endl;
+				
 			break;
-			case 6:
+			}
+	/*		case 6:
 			break;
 			case 7:
 			break;	*/
