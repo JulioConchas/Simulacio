@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdio>
 #include <conio.h>
+//#include "simpson.h"
 
 using namespace std;
 
@@ -26,11 +27,24 @@ int main(){
 			i = 0;
 			for(i = 0;i <= N;i++){
 				{
-				if(i%2!=0)f = 4*xi/sqrt(1+xi*xi*xi*xi);
-				else if(i%2==0)f = 2*xi/sqrt(1+xi*xi*xi*xi);
-				else if(i == 0)f = xi/sqrt(1+xi*xi*xi*xi);
-				else if(i == N)f = xi/sqrt(1+xi*xi*xi*xi);
+				if(i%2!=0){
+					f = 4*xi/sqrt(1+xi*xi*xi*xi);
+					cout <<"here\n";
+					}
+				else if(i%2==0){
+					f = (2*xi)/sqrt(1+xi*xi*xi*xi);
+					cout <<"here1\n";
+					}
+				else if(i == 0){
+					f = xi/sqrt(1+xi*xi*xi*xi);
+					cout <<"here2\n";
+					}
+				else if(i == N){
+					f = xi/sqrt(1+xi*xi*xi*xi);
+					cout <<"here3\n";
+					}
 				}
+				cout <<"efe"<<f<<endl;
 				xi = a + i*h;
 				suma = suma + f;
 			}
@@ -43,7 +57,6 @@ int main(){
 			cout <<"Desea hacer otra operacion s/n"<<endl;
 			cin >>d;
 		}while(d != 'n');
-	
 
 return 0;
 }
