@@ -1,10 +1,12 @@
 #include <iostream>
+#include <iomanip> //setprecision
 #include <cstdlib>
 #include <cmath>
 #include <cstdio>
 #include <conio.h>
 #include "nR.h"
 
+#define PRECISION 6
 
 using namespace std;
 
@@ -17,6 +19,9 @@ float fun (float x){
 double f(double x){
 	return -(x * x) - (2 * x) + 1;
 }
+void tabula(double a,double b);
+double f1(double x);
+double f2(double x);
 
 int main(){
 
@@ -157,80 +162,153 @@ int main(){
 			case 5:{
 				system("clear");
 				cout<< " **** Muller **** \n";
+				
+				int i = 1;
+				double x0,x1,x2,Eadm,n;
+				double h0,h1,d0,d1,A,B,C,R,denominador,h,x3;
 
-				int i,MAXIT;
-				double x0,x1,x2,x3,A,B,C,D,E,H0,H1;
-				double Fx0,Fx1,Fx2,Fx3,F10,F21,F210;
-				double A0,A1,A2,D0,D1;
-				double EA,EA1;
-
-				cout <<"\n\t\t METODO DE MULLER";
-				cout <<"\n\n FUNCION f(x) = x5 + x2 - 1";
-	
-				cout <<"\n\n Ingrese el valor para x0 = ";
+				cout <<"Ingrese x0:"; //0.5
 				cin >> x0;
-				cout <<"\n\n Ingrese el valor para x1 ";
-				cin >>x1;
-				cout <<"\n\n Ingrese el valor para x2 ";
-				cin >>x2;
-				cout <<"\n\n Ingrese numero de iteraciones ";
-				cin >> MAXIT;
+				cout <<"Ingrese x1:"; //-0.5
+				cin >> x1;
+				cout <<"Ingrese x2:";	//0.4
+				cin >> x2;
+				cout <<"Ingrese Eadm:";	//2
+				cin >>Eadm;
+				cout <<"Ingrese n:";	//5
+				cin >>n;
+				
+				h0 = x1 - x0;
+				h1 = x2 - x1;
 
-				i = 1;
-				while(i <= MAXIT){
-					Fx0 = pow(x0,5) + pow(x0,2) - 1;
-					Fx1 = pow(x1,5) + pow(x1,2) - 1;
-					Fx2 = pow(x2,5) + pow(x2,2) - 1;
+				d0 = (f2(x1) - f2(x0)) / (x1 - x0);
+				d1 - (f2(x2) - f2(x1)) / (x2 - x1);
 
-					F10 = (Fx1 - Fx0) / (x1 - x0);
-					F21 = (Fx2 - Fx1) / (x2 - x1);
-					F210 = (F21 - F10) / (x2 - x0);
+				A = (d1 - d0) / (h1 + h0);
+				
+				i = 3;
 
-					H0 = x1 - x0;
-					H1 = x2 - x1;
-
+				do{
+					B = A * h1 + d1;
+					C = f2(x2);
+					R = sqrt((pow(B,2) - (4*A*C)));
 					
-					D0 = (Fx1 - Fx0) / H0;
-					D1 = (Fx2 - Fx1) / H1;
-					
-					A = (D1 - D0) / (H1 + H0);	
-					B = (A * H1) + D1;
-					C = Fx2;
+					if((B + R) > (B - R))denominador = (B + R);
+					else denominador = (B - R);	
 
-					if(B > C){
-						x3 = (2 * A0) / D1;
+					h = (-2*C) / denominador;
+					x3 = x2 + h;
+
+					if(Eadm > abs(h)){
+						cout <<"x3 = "<<x3<<endl;
+						cout <<"Interaciones = "<<i<<endl;
+						break;
 					}
 					else{
-						x3 = (2 * A0) / D2;
+						x0 = x1;
+						x1 = x2;
+						x2 = x3;
+						h0 = x1 - x0;
+						h1 = x2 - x1;
+						d0 = (f2(x1) - f2(x0)) / h0;
+						d1 = (f2(x2) - f2(x1)) / h1;
+						A = (d1 = d0) / (h1 + h0);
+						i++;
 					}
-					Fx3 = pow(x3,3) + pow(x3,2) - 5 * x3 + 20;
 
-					D = abs(x3 - x0);
-					E = abs(Fx3);
 
-					if((D < EA1) || (E < EA1)){
-						cout << "\n\n calor de x: "<<x3<<endl<<endl;
-						cout << "\n\n El numero de iteracion encontrado: "<<i<<endl;
-						break;						
+				}while(i <= n);
+					if(i == n){
+					cout << "NeuN\n";
+					cout << "Iteraciones: "<<n<<endl;
 					}
-					x0 = x1;
-					x1 = x2;
-					x2 = x3;
-
-					i++;
-
-				
-				}
-				cout << "El sistema no converge "<<MAXIT<<" Iteraciones.\n";
-				cout << "El ultimo valor encontrado para x: "<<x3<<endl;
-				
 			break;
 			}
-	/*		case 6:
+		/*	case 6:{
+				system("clear");
+				cout <<" **** Relajacion ****\n";
+				
+				int i = 0;
+				double x,x1 = 0,x2 = 0,x3 = 0;
+				double tol,MAXIT,w;
+
+				while(i < MAXIT){
+					x1 = -x2 / 5 + (2 / 5 * x3) - 1/5;
+					x2 = -x1 / 3 + x3 / 2 + 1/3;
+					x3 = (-2/7 * x1) - x2 / 7 + 32 / 7;
+					
+					x = (1 - w)
+				}
+				
+
 			break;
-			case 7:
-			break;	*/
+			}*/
+			case 7:{
+				system("clear");
+				cout << " **** Biseccion ****\n";
+				cout <<"Ingrese el intervalo inicial [a,b]:\n";
+				cout << setprecision(PRECISION);
+
+				double a,b,tolerancia;
+				cout <<"a = ";
+				cin >> a;
+				cout <<"b = ";
+				cin >>b;
+
+				tabula(a,b);
+				
+				cout <<"Escoja el intervalo adecuado"<<endl;
+				cout <<"a =";
+				cin >>a;
+				cout <<"b =";
+				cin >>b;
+				
+				double xr;
+
+				if(f1(a) * f1(b) > 0)cout <<"No se puede aplicar por que tienen el mismo signo"<<endl;
+				else{
+					cout <<"Tolerancia =";
+					cin >>tolerancia;
+					
+					cout <<"a\tb\tx\tf(a)\t\tf(b)\t\tf(x)"<<endl<<endl;
+
+					do{
+						
+						xr = (a + b) / 2.0;
+						
+						cout <<a<<"\t"<<b<<"\t"<<xr<<"\t"<<f1(a)<<"\t"<<f(b)<<"\t"<<f(xr)<<endl;
+
+						if(abs(f1(xr)) <= tolerancia){
+							cout <<"Para una tolerancia "<<tolerancia<<" la raiz de f es "<<xr<<endl;
+							break;
+						}
+						else{
+							if(f1(xr) * f1(a) > 0)a = xr;
+							else if(f1(xr) * f1(b) > 0)b = xr;
+						}
+					}while(1);
+				}
+			break;
+			}
 		}
 
 return 0;
+}
+#define INTERVALOR 10
+
+void tabula(double a,double b){
+	int puntos = INTERVALOR + 1;
+	double ancho = (b - a) / INTERVALOR;
+
+	cout <<"\tx\tf(x)\n";
+	for(int i =0;i < puntos;i++){
+		cout <<"\t"<<a<<"\t"<<f1(a)<<endl;
+		a = a + ancho;
+	}
+}
+double f1(double x){
+	return exp(-1 * x) - cos(3 * x) - 0.5;
+}
+double f2(double x){
+	return pow(x,3) - (13 * x) - 12;
 }
